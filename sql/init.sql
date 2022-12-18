@@ -12,12 +12,12 @@ CREATE TABLE `Programa` (
   `director`varchar(255),
   `correo`varchar(255),
   `id` INT NOT NULL  PRIMARY KEY
-)
+);
 
 CREATE TABLE `Tener_arancel`(
   `año` int NOT NULL,
   `valor` int NOT NULL
-)
+);
 
 CREATE TABLE `Becas`(
   `nombre` varchar(255),
@@ -25,7 +25,7 @@ CREATE TABLE `Becas`(
   `porcentaje` INT NOT NULL,
   `año` INT NOT NULL,
   `semestre` INT NOT NULL
-)
+);
 
 CREATE TABLE `Comprobante`(
   `id` INT NOT NULL PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE `Comprobante`(
   `fecha_pago` DATE,
   `arancel-matricula` VARCHAR(32),
   `enlace_foto` VARCHAR(255)
-)
+);
 
 
 CREATE TABLE `Estudiante` (
@@ -47,4 +47,4 @@ CREATE TABLE `Estudiante` (
   FOREIGN KEY (`id_programa`) REFERENCES `Programa` (`id`),
   FOREIGN KEY (`id_comprobante`) REFERENCES `Comprobante` (`id`),
   FOREIGN KEY (`id_beca`) REFERENCES `Becas` (`id`)
-)
+);
