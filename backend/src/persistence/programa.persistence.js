@@ -9,7 +9,7 @@ export const deletePrograma = async(id) => {
     return result
 }
 export const createPrograma = async(Programa) => { 
-    const [row] = await pool.query('INSERT INTO Programa (nombre,director,correo,id) VALUES (?,?,?,?)', [Programa.nombre, Programa.director, Programa.correo,Programa.id])
+    const [row] = await pool.query('INSERT INTO Programa (nombre,director,correo) VALUES (?,?,?)', [Programa.nombre, Programa.director, Programa.correo])
     return {row}
 }
 export const updatePrograma = async(Programa) => {
