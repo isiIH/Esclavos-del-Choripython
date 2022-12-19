@@ -13,6 +13,8 @@ export const createComprobante = async(comprobante) => {
     return {row}
 }
 export const updateComprobante = async(comprobante) => {
-    const result = await pool.query('UPDATE informacion SET monto = ? WHERE ID = ?',[comprobante.monto,comprobante.id])
+    const result = await pool.query(
+        'UPDATE Comprobante SET monto = COALESCE(?,monto), fecha_pago = COALESCE(?,fecha_pago), arancel_matricula= COALESCE(?,arancel_matricula),enlace_foto = COALESCE(?,enlace_foto) WHERE ID = ?'
+        ,[comprobante.monto,comprobante.fecha_pago, comprobante.arancel_matricula, comprobante.enlace_foto, comprobante.id])
     return result;
 }

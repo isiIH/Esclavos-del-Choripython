@@ -13,6 +13,8 @@ export const createPrograma = async(Programa) => {
     return {row}
 }
 export const updatePrograma = async(Programa) => {
-    const result = await pool.query('UPDATE Programa SET nombre = ?, director = ?, correo = ? WHERE ID = ?',[Programa.nombre, Programa.director, Programa.correo,Programa.id])
+    const result = await pool.query(
+    'UPDATE Programa SET nombre = COALESCE(?,nombre), director = COALESCE(?,director), correo = COALESCE(?,correo) WHERE ID = ?'
+    ,[Programa.nombre, Programa.director, Programa.correo,Programa.id])
     return result;
 }

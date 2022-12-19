@@ -13,7 +13,11 @@ export const createBeca = async(Beca) => {
     return {row}
 }
 export const updateBeca = async(Beca) => {
-    const result = await pool.query('UPDATE Becas SET nombre = ?, porcentaje = ?, año = ?, semestre = ? WHERE ID = ?',[Beca.nombre, Beca.porcentaje, Beca.año, Beca.semestre, Beca.id])
+    const result = await pool.query
+    (
+        'UPDATE Becas SET nombre = COALESCE(?,nombre), porcentaje = COALESCE(?,porcentaje), año = COALESCE(?,año), semestre = COALESCE(?,semestre) WHERE ID = ?',
+        [Beca.nombre, Beca.porcentaje, Beca.año, Beca.semestre, Beca.id]
+    )
     return result;
 }
 

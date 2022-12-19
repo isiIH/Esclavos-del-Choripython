@@ -13,6 +13,9 @@ export const createArancel= async(tener_arancel) => {
     return {row}
 }
 export const updateArancel = async(tener_arancel) => {
-    const result = await pool.query('UPDATE Tener_arancel SET valor = ?, año = ? WHERE id = ?',[tener_arancel.valor,tener_arancel.año,tener_arancel.id])
+    const valor = tener_arancel.valor;
+    const año = tener_arancel.año;
+    const id = tener_arancel.id;
+    const result = await pool.query('UPDATE Tener_arancel SET valor = COALESCE(?,valor), año = COALESCE(?,año) WHERE id = ?',[valor,año,id])
     return result;
 }
