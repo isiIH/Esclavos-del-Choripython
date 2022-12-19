@@ -20,6 +20,6 @@ export const putAr = async(req, res) => {
 }
 
 export const deleteAr = async(req, res) => {
-    const result = deleteArancel( req.params.año,req.params.valor)
+    const result = deleteArancel( req.params.id)
    res.send("Eliminado correctamente");
 }

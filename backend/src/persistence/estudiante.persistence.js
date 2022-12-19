@@ -9,12 +9,14 @@ export const deleteEstudiante = async(rut) => {
     return result
 }
 export const createEstudiante = async(estudiante) => {
-    const [row] = await pool.query('INSERT INTO Estudiante (nombre,rut,correo,programa,id_programa,id_comprobante,id_beca) VALUES (?,?,?,?,?,?,?)', 
-                                [estudiante.nombre,estudiante.rut,estudiante.correo,estudiante.programa,estudiante.id_programa,estudiante.id_comprobante,estudiante.id_beca])
+    const [row] = await pool.query('INSERT INTO Estudiante (nombre,rut,correo,id_programa) VALUES (?,?,?,?)', 
+                                [estudiante.nombre,estudiante.rut,estudiante.correo,estudiante.id_programa])
     return {row}
 }
 export const updateEstudiante = async(estudiante) => {
 
-    const result = await pool.query('UPDATE Estudiante SET nombre = ?, correo = ?, programa = ?, id_programa = ?, id_comprobante = ?, id_beca = ?  WHERE rut = ?',[estudiante.nombre, estudiante.correo, estudiante.programa, estudiante.id_programa, estudiante.id_comprobante, estudiante.id_beca,estudiante.rut])
+    const result = await pool.query(
+        'UPDATE Estudiante SET nombre = COALESCE(?,nombre), correo = COALESCE(?,correo), id_programa = COALESCE(?,id_programa) WHERE rut = ?',
+        [estudiante.nombre, estudiante.correo, estudiante.id_programa, estudiante.rut])
     return result;
 }

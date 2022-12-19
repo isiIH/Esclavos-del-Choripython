@@ -8,7 +8,6 @@ export const getBecas = async (req, res) => {
 
 export const postBecas = async (req, res) => {
     let beca = new Beca(req.body)
-    //console.log(beca)
     const result = await createBeca(beca);
     res.json("Información de becas posteada correctamente")
 }

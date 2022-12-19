@@ -5,6 +5,7 @@ import Tener_Arancel from './src/routes/tener_arancel.routes.js'
 import Becas from './src/routes/becas.routes.js'
 import Comprobante from './src/routes/comprobante.routes.js'
 import Estudiante from './src/routes/estudiante.routes.js'
+import Cuenta from "./src/routes/cuenta.routes.js";
 
 //Crear aplicación express
 const App = express();
@@ -26,6 +27,8 @@ App.use("/api",Becas);
 App.use("/api",Comprobante);
 
 App.use("/api",Estudiante);
+
+App.use("/api",Cuenta);
 
 
 App.listen(3000);

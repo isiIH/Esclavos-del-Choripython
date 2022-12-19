@@ -20,6 +20,6 @@ export const putComp = async(req, res) => {
 }
 
 export const deleteComp = async(req, res) => {
-    const result = deleteComprobante( req.params.id)
+    const result = deleteComprobante( req.params.num_boleta)
    res.send("Eliminado correctamente");
 }
