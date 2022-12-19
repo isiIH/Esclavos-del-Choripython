@@ -9,10 +9,10 @@ export const deleteComprobante = async(num_boleta) => {
     return result
 }
 export const createComprobante = async(comprobante) => {
-    const [row] = await pool.query('INSERT INTO Comprobante (num_boleta,monto,fecha_pago,arancel_matricula,enlace_foto) VALUES (?,?,?,?,?)', [comprobante.num_boleta,comprobante.monto,comprobante.fecha_pago,comprobante.arancel_matricula,comprobante.enlace_foto])
+    const [row] = await pool.query('INSERT INTO Comprobante (num_boleta,monto,fecha_pago,arancel_matricula,enlace_foto,rut_estudiante) VALUES (?,?,?,?,?,?)', [comprobante.num_boleta,comprobante.monto,comprobante.fecha_pago,comprobante.arancel_matricula,comprobante.enlace_foto,comprobante.rut_estudiante])
     return {row}
 }
 export const updateComprobante = async(comprobante) => {
-    const result = await pool.query('UPDATE Comprobante SET monto = ?, fecha_pago = ?, arancel_matricula = ?, enlace_foto = ? WHERE num_boleta = ?',[comprobante.monto, comprobante.fecha_pago, comprobante.arancel_matricula, comprobante.enlace_foto, comprobante.num_boleta])
+    const result = await pool.query('UPDATE Comprobante SET monto = ?, fecha_pago = ?, arancel_matricula = ?, enlace_foto = ?, rut_estudiante = ? WHERE num_boleta = ?',[comprobante.monto, comprobante.fecha_pago, comprobante.arancel_matricula, comprobante.enlace_foto, comprobante.rut_estudiante, comprobante.num_boleta])
     return result;
 }

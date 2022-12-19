@@ -9,11 +9,11 @@ export const deleteBeca = async(id) => {
     return result
 }
 export const createBeca = async(Beca) => {
-    const [row] = await pool.query('INSERT INTO Becas (nombre,porcentaje,año,semestre) VALUES (?,?,?,?)', [Beca.nombre, Beca.porcentaje, Beca.año, Beca.semestre])
+    const [row] = await pool.query('INSERT INTO Becas (nombre,porcentaje,año,semestre,rut_estudiante) VALUES (?,?,?,?,?)', [Beca.nombre, Beca.porcentaje, Beca.año, Beca.semestre,Beca.rut_estudiante])
     return {row}
 }
 export const updateBeca = async(Beca) => {
-    const result = await pool.query('UPDATE Becas SET nombre = ?, porcentaje = ?, año = ?, semestre = ? WHERE ID = ?',[Beca.nombre, Beca.porcentaje, Beca.año, Beca.semestre, Beca.id])
+    const result = await pool.query('UPDATE Becas SET nombre = ?, porcentaje = ?, año = ?, semestre = ?, rut_estudiante = ? WHERE ID = ?',[Beca.nombre, Beca.porcentaje, Beca.año, Beca.semestre, Beca.rut_estudiante, Beca.id])
     return result;
 }
 
