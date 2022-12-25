@@ -1,0 +1,157 @@
+Programa:
+[
+  {
+    "nombre": "Ingeniería Civil",
+    "director": "Juan Pérez",
+    "correo": "juan.perez@example.com",
+    "id": 1
+  },
+  {
+    "nombre": "Ingeniería Industrial",
+    "director": "Ana Martínez",
+    "correo": "ana.martinez@example.com",
+    "id": 2
+  },
+  {
+    "nombre": "Ingeniería Informática",
+    "director": "Carlos Rodríguez",
+    "correo": "carlos.rodriguez@example.com",
+    "id": 3
+  }
+]
+
+Tener_arancel:
+[
+  {
+    "ID": 1,
+    "año": 2020,
+    "valor": 100000
+  },
+  {
+    "ID": 2,
+    "año": 2021,
+    "valor": 120000
+  },
+  {
+    "ID": 3,
+    "año": 2022,
+    "valor": 140000
+  }
+]
+
+Becas:
+[
+  {
+    "nombre": "Beca A",
+    "id": 1,
+    "porcentaje": 50,
+    "año": 2020,
+    "semestre": 1
+  },
+  {
+    "nombre": "Beca B",
+    "id": 2,
+    "porcentaje": 75,
+    "año": 2020,
+    "semestre": 2
+  },
+  {
+    "nombre": "Beca C",
+    "id": 3,
+    "porcentaje": 25,
+    "año": 2021,
+    "semestre": 1
+  }
+]
+
+Comprobante:
+[
+  {
+    "id": 1,
+    "monto": 100000,
+    "fecha_pago": "2020-01-01",
+    "arancel_matricula": "Arancel Matrícula",
+    "enlace_foto": "https://example.com/comprobante1.jpg"
+  },
+  {
+    "id": 2,
+    "monto": 120000,
+    "fecha_pago": "2021-01-01",
+    "arancel_matricula": "Arancel Matrícula",
+    "enlace_foto": "https://example.com/comprobante2.jpg"
+  },
+  {
+    "id": 3,
+    "monto": 140000,
+    "fecha_pago": "2022-01-01",
+    "arancel_matricula": "Arancel Matrícula",
+    "enlace_foto": "https://example.com/comprobante3.jpg"
+  }
+]
+
+Estudiante:
+[
+  {
+    "nombre": "Juan Pérez",
+    "rut": "12345678-9",
+    "correo": "juan.perez@example.com",
+    "programa": "Ingeniería Civil",
+    "id_programa": 1,
+    "id_comprobante": 1,
+    "id_beca": 2
+  },
+  {
+    "nombre": "Ana Martínez",
+    "rut": "98765432-1",
+    "correo": "ana.martinez@example.com",
+    "programa": "Ingeniería Industrial",
+    "id_programa": 2,
+    "id_comprobante": 2,
+    "id_beca": 1
+  },
+  {
+    "nombre": "Carlos Rodríguez",
+    "rut": "12312312-3",
+    "correo": "carlos.rodriguez@example.com",
+    "programa": "Ingeniería Informática",
+    "id_programa": 3,
+    "id_comprobante": 3,
+    "id_beca": 3
+  },
+  {
+    "nombre": "Mónica Gómez",
+    "rut": "45678901-2",
+    "correo": "monica.gomez@example.com",
+    "programa": "Arquitectura",
+    "id_programa": 4,
+    "id_comprobante": 4,
+    "id_beca": 2
+  },
+  {
+    "nombre": "Sofía Díaz",
+    "rut": "78901234-5",
+    "correo": "sofia.diaz@example.com",
+    "programa": "Ingeniería Mecánica",
+    "id_programa": 5,
+    "id_comprobante": 5,
+    "id_beca": 1
+  },
+  {
+    "nombre": "Pablo Martín",
+    "rut": "78901234-6",
+    "correo": "pablo.martin@example.com",
+    "programa": "Ingeniería Electrónica",
+    "id_programa": 6,
+    "id_comprobante": 6,
+    "id_beca": 3
+  },
+  {
+    "nombre": "Laura Ruiz",
+    "rut": "78901234-7",
+    "correo": "laura.ruiz@example.com",
+    "programa": "Ingeniería Química",
+    "id_programa": 7,
+    "id_comprobante": 7,
+    "id_beca": 2
+  }
+]
