@@ -78,7 +78,7 @@ const Tabla = () => {
   
     fetchEstData();
   
-  }, [])
+  }, [estData])
 
   useEffect(() => {
     const fetchProgData = async () => {
@@ -92,7 +92,7 @@ const Tabla = () => {
   
     fetchProgData();
   
-  }, [])
+  }, [progData])
 
   useEffect(() => {
     const fetchCompData = async () => {
@@ -103,7 +103,7 @@ const Tabla = () => {
   
     fetchCompData();
   
-  }, [])
+  }, [compData])
 
   useEffect(() => {
     const fetchArancelData = async () => {
@@ -114,7 +114,7 @@ const Tabla = () => {
   
     fetchArancelData();
   
-  }, [])
+  }, [arancelData])
 
   // console.log(arancelData);
 
