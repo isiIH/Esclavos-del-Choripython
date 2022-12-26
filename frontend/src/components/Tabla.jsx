@@ -7,6 +7,13 @@ function getFecha(params) {
   return `${info[2].substring(0,2)}/${info[1]}/${info[0]}`;
 }
 
+function getTotal(params) {
+  let comps = params.row.comprobantes
+  let total = 0;
+  comps.forEach(comp => total += comp.monto);
+  return `$${total}`;
+}
+
 const columnsEst = [
   { field: 'rut', headerName: 'Rut' },
   { field: 'nombre', headerName: 'Nombre', width: 300 },
@@ -33,10 +40,9 @@ const columnsComp = [
 const columsUser = [
   { field: 'rut', headerName: 'Rut' },
   { field: 'nombre', headerName: 'Nombre', width: 300 },
-  { field: 'correo', headerName: 'Correo', width: 600 },
-  { field: 'nombre_programa', headerName: 'Nombre Programa', width: 300 },
-  { field: 'director', headerName: 'Director', width: 300 },
-  { field: 'correo_programa', headerName: 'Correo Programa', width: 600 }
+  { field: 'correo', headerName: 'Correo', width: 300 },
+  { field: 'nombre_programa', headerName: 'Nombre Programa', width: 200 },
+  { field: 'comprobantes', headerName: 'Total pagado', valueGetter: getTotal },
 ]
 
 const Tabla = () => {
@@ -80,43 +86,36 @@ const Tabla = () => {
   
   }, [])
 
-  const mergeAB = estData.map( companyA => {
-    const matched = progData.find(companyB => companyB.id === companyA.id_programa)
+
+
+  const est_prog = estData.map( est => {
+    const matched = progData.find(prog => prog.id === est.id_programa)
     if(matched) {
-      return {...companyA, ...matched}
+      return {...est, ...matched}
     } else {
-      // return companyA element or customize it with your case
+      
+    }
+  }
+  );
+
+  const findComprobantes = est_prog.map( est => {
+    const matched = compData.filter(comp => comp.rut_estudiante === est.rut)
+    if(matched) {
+      return {...est, comprobantes: matched}
+    } else {
+      return est
     }
   }
   );
   
-  console.log(mergeAB)
+  // console.log(findComprobantes)
 
   return (
     <div style={{ height: 700, width: '100%' }}>
-      {/* <DataGrid
+      <DataGrid
+        className='datagrid'
         getRowId={(row) => row.rut}
-        rows={estData}
-        columns={columnsEst}
-        pageSize={12}
-      />
-
-      <DataGrid
-        rows={progData}
-        columns={columnsProg}
-        pageSize={12}
-      />
-
-      <DataGrid
-        getRowId={(row) => row.num_boleta}
-        rows={compData}
-        columns={columnsComp}
-        pageSize={12}
-      /> */}
-
-      <DataGrid
-        getRowId={(row) => row.rut}
-        rows={mergeAB}
+        rows={findComprobantes}
         columns={columsUser}
         pageSize={12}
       />
