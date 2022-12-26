@@ -9,13 +9,14 @@ export const deleteArancel = async(id) => {
     return result
 }
 export const createArancel= async(tener_arancel) => {
-    const [row] = await pool.query('INSERT INTO Tener_arancel (año,valor) VALUES (?,?)', [tener_arancel.año,tener_arancel.valor])
+    const [row] = await pool.query('INSERT INTO Tener_arancel (año,valor,id_programa) VALUES (?,?,?)', [tener_arancel.año,tener_arancel.valor,tener_arancel.id_programa])
     return {row}
 }
 export const updateArancel = async(tener_arancel) => {
     const valor = tener_arancel.valor;
     const año = tener_arancel.año;
     const id = tener_arancel.id;
-    const result = await pool.query('UPDATE Tener_arancel SET valor = COALESCE(?,valor), año = COALESCE(?,año) WHERE id = ?',[valor,año,id])
+    const id_programa = tener_arancel.id_programa;
+    const result = await pool.query('UPDATE Tener_arancel SET valor = COALESCE(?,valor), año = COALESCE(?,año), id_programa = COALESCE(?,id_programa) WHERE id = ?',[valor,año,id_programa,id])
     return result;
 }

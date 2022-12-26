@@ -23,19 +23,24 @@ Programa:
 Tener_arancel:
 [
   {
-    "ID": 1,
     "año": 2020,
-    "valor": 100000
+    "valor": 100000,
+    "id_programa": 1
   },
   {
-    "ID": 2,
     "año": 2021,
-    "valor": 120000
+    "valor": 120000,
+    "id_programa": 2
   },
   {
-    "ID": 3,
+    "año": 2021,
+    "valor": 120000,
+    "id_programa": 3
+  },
+  {
     "año": 2022,
-    "valor": 140000
+    "valor": 27000,
+    "id_programa": 2
   }
 ]
 

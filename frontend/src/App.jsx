@@ -1,11 +1,11 @@
-import Welcome from "./components/Welcome"
+import Tabla from "./components/Tabla"
 import './App.css'
 
 
 function App() {
   return(
     <>
-      <Welcome />
+      <Tabla />
     </>
   )
 }

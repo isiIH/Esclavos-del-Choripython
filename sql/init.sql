@@ -22,7 +22,9 @@ CREATE TABLE `Tener_arancel`(
   `id` INT NOT NULL AUTO_INCREMENT,
   `año` int NOT NULL,
   `valor` int NOT NULL,
-  PRIMARY KEY (id)
+  `id_programa` INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (`id_programa`) REFERENCES `Programa` (`id`)
 );
 
 CREATE TABLE `Becas`(
