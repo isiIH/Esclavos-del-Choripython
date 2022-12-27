@@ -14,6 +14,36 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 
+function getFecha(params) {
+  let fecha = params.fecha_pago
+  var info = fecha.split('-');
+  return `${info[2].substring(0,2)}/${info[1]}/${info[0]}`;
+}
+
+function getTotal(params) {
+  let comps = params.comprobantes;
+  let total = 0;
+  comps.forEach(comp => total += comp.monto);
+  return `$${total}`;
+}
+
+function getPorPagar(params) {
+  let comps = params.comprobantes;
+  let total = 0;
+  comps.forEach(comp => total += comp.monto);
+
+  let arans = params.aranceles;
+  let año_actual = 2022;
+  let montoPorPagar = 0;
+  arans.forEach(arancel => {
+    if(arancel.año === año_actual) {
+      montoPorPagar = arancel.valor - total;
+      if(montoPorPagar < 0) montoPorPagar = 0;
+    }
+  });
+  return `$${montoPorPagar}`;
+}
+
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
@@ -31,40 +61,40 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.rut}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">{row.nombre}</TableCell>
+        <TableCell align="right">{row.correo}</TableCell>
+        <TableCell align="right">{row.nombre_programa}</TableCell>
+        <TableCell align="right">{getTotal(row)}</TableCell>
+        <TableCell align="right">{getPorPagar(row)}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Comprobantes
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>Número de boleta</TableCell>
+                    <TableCell>Monto</TableCell>
+                    <TableCell>Fecha</TableCell>
+                    <TableCell>Enlace comprobante</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                  {/* <h1>hola</h1> */}
+                  {row.comprobantes.map((comp) => (
+                    <TableRow key={comp.num_boleta}>
                       <TableCell component="th" scope="row">
-                        {historyRow.date}
+                        {comp.num_boleta}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
+                      <TableCell>{comp.monto}</TableCell>
+                      <TableCell>{getFecha(comp)}</TableCell>
+                      <TableCell>{comp.enlace_foto}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -166,7 +196,12 @@ const CollapseTable = () => {
   }
   );
 
-  console.log(findArancel)
+  // console.log(findArancel)
+  
+  findArancel.map((row) => (
+    // <Row key={row.nombre} row={row.nombre_programa} />
+    row.comprobantes.map((comp) => console.log(comp.num_boleta))
+  ))
 
   return (
     <TableContainer component={Paper}>
@@ -183,10 +218,11 @@ const CollapseTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          hola
-          {/* {findArancel.map((row) => (
-            <Row key={row.rut} row={row.nombre/} />
-          ))} */}
+          {
+            findArancel.map((row) => (
+              <Row key={row.rut} row={row} />
+            ))
+          }
         </TableBody>
       </Table>
     </TableContainer>
