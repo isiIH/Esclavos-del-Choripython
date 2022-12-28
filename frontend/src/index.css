@@ -1,6 +1,7 @@
 #root {
   width: 100%; /* creo que tiene mas que ver con el ancho de la tabla que se le pasa en el .jsx */
   margin: 0, auto; /*creo que ahí está bien, ya quedó centrado*/
+  margin-top: 4%;
   padding: 20, 0;
 }
 #container {

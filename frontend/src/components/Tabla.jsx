@@ -156,6 +156,7 @@ const Tabla = () => {
   return (
     <div style={{ height: 700, width: '100%' }}>
       <DataGrid
+        
         className='datagrid'
         getRowId={(row) => row.rut}
         rows={findArancel}

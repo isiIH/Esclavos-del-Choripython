@@ -50,7 +50,7 @@ function Row(props) {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset'} }}>
         <TableCell>
           <IconButton
             aria-label="expand row"
@@ -60,25 +60,29 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell align="left" component="th" scope="row">
           {row.rut}
         </TableCell>
-        <TableCell align="right">{row.nombre}</TableCell>
-        <TableCell align="right">{row.correo}</TableCell>
-        <TableCell align="right">{row.nombre_programa}</TableCell>
-        <TableCell align="right">{getTotal(row)}</TableCell>
-        <TableCell align="right">{getPorPagar(row)}</TableCell>
+        <TableCell align="left">{row.nombre}</TableCell>
+        <TableCell align="left">{row.correo}</TableCell>
+        <TableCell align="left">{row.nombre_programa}</TableCell>
+        <TableCell align="left">{getTotal(row)}</TableCell>
+        <TableCell align="left">{getPorPagar(row)}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
+              <Typography variant="h5" gutterBottom component="div">
                 Comprobantes
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
-                  <TableRow>
+                  <TableRow sx={{bgcolor: '' ,
+                            "& th":{
+                                fontSize: "1.1rem",
+                              }
+                            }}>
                     <TableCell>Número de boleta</TableCell>
                     <TableCell>Monto</TableCell>
                     <TableCell>Fecha</TableCell>
@@ -206,15 +210,21 @@ const CollapseTable = () => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
+        
+        <TableHead >
+          <TableRow sx={{bgcolor: 'orange' ,
+            border: "1.6px solid black",
+            "& th":{
+                fontSize: "1.25rem",
+              }
+            }}>
             <TableCell />
-            <TableCell>Rut</TableCell>
-            <TableCell align="right">Nombre</TableCell>
-            <TableCell align="right">Correo</TableCell>
-            <TableCell align="right">Programa</TableCell>
-            <TableCell align="right">Total Pagado</TableCell>
-            <TableCell align="right">Por pagar</TableCell>
+            <TableCell align="left">Rut</TableCell>
+            <TableCell align="left">Nombre</TableCell>
+            <TableCell align="left">Correo</TableCell>
+            <TableCell align="left">Programa</TableCell>
+            <TableCell align="left">Total Pagado</TableCell>
+            <TableCell align="left">Por pagar</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
