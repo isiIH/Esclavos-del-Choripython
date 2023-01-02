@@ -96,7 +96,7 @@ function Row(props) {
                       <TableCell component="th" scope="row">
                         {comp.num_boleta}
                       </TableCell>
-                      <TableCell>{comp.monto}</TableCell>
+                      <TableCell>${comp.monto}</TableCell>
                       <TableCell>{getFecha(comp)}</TableCell>
                       <TableCell>{comp.enlace_foto}</TableCell>
                     </TableRow>
