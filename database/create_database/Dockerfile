@@ -1,7 +1,7 @@
-FROM python:3.7.3-slim AS base
+FROM python:3.10.6-slim AS base
 RUN apt-get update && apt-get install --no-install-recommends --yes python3
 
-RUN pip install mysql.connector
+RUN pip install mysql-connector-python
 
 ENV PYTHONUNBUFFERED 1
 
